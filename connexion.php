@@ -2,134 +2,245 @@
 session_start();
 ?>
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
-	<title>Connexion/Inscription</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Connexion / Inscription</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <style>
+        /* --- PERSONALISATION SELON TA CHARTE (#54b454) --- */
+
+        body {
+            background-color: #f4f4f4; /* Fond gris très léger pour faire ressortir la carte */
+        }
+
+        .auth-card {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            border: none;
+            border-radius: 0; /* On garde des angles un peu plus carrés comme ton design */
+        }
+
+        /* --- DESIGN DES ONGLETS (TABS) --- */
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav-tabs .nav-link {
+            color: #333; /* Texte gris foncé par défaut */
+            font-weight: 600;
+            border: none;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: #54b454; /* Ton vert au survol */
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #54b454; /* Ton vert pour l'actif */
+            border-bottom: 3px solid #54b454; /* Soulignement vert */
+            background-color: transparent;
+        }
+
+        /* --- DESIGN DES CHAMPS DE SAISIE --- */
+        .input-group-text {
+            background-color: white;
+            border-right: none;
+            color: #54b454; /* Icône en vert */
+        }
+
+        .form-control {
+            border-left: none;
+        }
+
+        /* On vire le halo bleu moche de Bootstrap au focus */
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #54b454; /* Bordure verte au clic */
+        }
+
+        /* Quand on clique dans le champ, l'icone et la bordure changent */
+        .input-group:focus-within .input-group-text,
+        .input-group:focus-within .form-control {
+            border-color: #54b454;
+        }
+
+        /* --- BOUTONS (Même logique que ta navbar) --- */
+        .btn-scierie {
+            background-color: #54b454;
+            border: 1px solid #54b454;
+            color: black; /* ou white selon préférence, j'ai mis black car ton nav-link est black */
+            font-weight: 600;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+
+        /* Si tu préfères le texte blanc par défaut sur le bouton vert : */
+        .btn-scierie { color: white; }
+
+        /* Au survol : Fond blanc, texte vert (comme ta navbar) */
+        .btn-scierie:hover {
+            background-color: white;
+            color: #54b454;
+            border-color: #54b454;
+        }
+
+    </style>
 </head>
 
 <body>
 
-	<section>
-<!--*************** MENU ***************-->
-        <?php include "includes/navbar.php"; ?>
+<?php include "includes/navbar.php"; ?>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-5">
 
+            <div class="card shadow auth-card">
+                <div class="card-header p-0">
+                    <ul class="nav nav-tabs nav-fill" id="authTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#loginPanel" role="tab" aria-controls="loginPanel" aria-selected="true">
+                                <i class="fas fa-sign-in-alt"></i> Connexion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#registerPanel" role="tab" aria-controls="registerPanel" aria-selected="false">
+                                <i class="fas fa-user-plus"></i> Inscription
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-body p-4">
+                    <?php
+                    // 1. Erreur de Connexion
+                    if (isset($_SESSION['errCnx']) && !empty($_SESSION['errCnx'])): ?>
+                        <div class="alert alert-danger text-center"><?= $_SESSION['errCnx']; ?></div>
+                        <?php unset($_SESSION['errCnx']); // On détruit la variable ?>
+                    <?php endif; ?>
+
+                    <?php
+                    if (isset($_SESSION['creationOk']) && !empty($_SESSION['creationOk'])): ?>
+                        <div class="alert alert-success text-center"><?= $_SESSION['creationOk']; ?></div>
+                        <?php unset($_SESSION['creationOk']); ?>
+                    <?php endif; ?>
+
+                    <?php
+                    if (isset($_SESSION['creationNok']) && !empty($_SESSION['creationNok'])): ?>
+                        <div class="alert alert-danger text-center"><?= $_SESSION['creationNok']; ?></div>
+                        <?php unset($_SESSION['creationNok']); ?>
+                    <?php endif; ?>
+
+                    <?php
+                    if (isset($_SESSION['errMdp']) && !empty($_SESSION['errMdp'])): ?>
+                        <div class="alert alert-warning text-center"><?= $_SESSION['errMdp']; ?></div>
+                        <?php unset($_SESSION['errMdp']); ?>
+                    <?php endif; ?>
+
+                    <?php
+                    if (isset($_SESSION['errId']) && !empty($_SESSION['errId'])): ?>
+                        <div class="alert alert-danger text-center"><?= $_SESSION['errId']; ?></div>
+                        <?php unset($_SESSION['errId']); ?>
+                    <?php endif; ?>
+
+
+                    <div class="tab-content" id="authTabContent">
+
+                        <div class="tab-pane fade show active" id="loginPanel" role="tabpanel" aria-labelledby="login-tab">
+                            <h4 class="text-center mb-4 mt-2" style="color:#54b454;">Connexion</h4>
+
+                            <form action="controleur/traitementFormConnexion.php" method="GET">
+                                <div class="form-group">
+                                    <label for="idUtil">Identifiant</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="idUtil" id="idUtil" placeholder="Votre nom d'utilisateur" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mdpUtil">Mot de Passe</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" name="mdpUtil" id="mdpUtil" placeholder="Votre mot de passe" required>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-scierie btn-block mt-4">
+                                    Se connecter
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="registerPanel" role="tabpanel" aria-labelledby="register-tab">
+                            <h4 class="text-center mb-4 mt-2" style="color:#54b454;">Inscription</h4>
+
+                            <form action="controleur/traitementFormInscription.php" method="GET">
+                                <div class="form-group">
+                                    <label for="idUtilCreation">Identifiant souhaité</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-plus"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="idUtilCreation" id="idUtilCreation" placeholder="Ex: JeanDupont" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pwdCreation">Mot de Passe</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" name="pwdCreation" id="pwdCreation" placeholder="Mot de passe fort" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pwdBis">Confirmation</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-check-circle"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" name="pwdBis" id="pwdBis" placeholder="Répétez le mot de passe" required>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-scierie btn-block mt-4">
+                                    S'inscrire
+                                </button>
+                            </form>
+                        </div>
+
+                    </div> </div> </div> </div>
+    </div>
+</div>
+
+<?php include "includes/footer.php"; ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-	$(document).ready(function(){
-
-		$('.menu').click(function(){
-			
-			$('ul').toggleClass('active');
-		})
-	})
-
-</script> 
-<!--*************** END MENU ***************-->
-	</section>
-	
-	<div class="forms">
-
-		<ul class="onglets">
-		    <li class="onglet active"><a href="#login">Connexion</a></li>
-		    <li class="onglet"><a href="#sinscrire">Inscription</a></li>
-		</ul>
-
-		<form action="controleur/traitementFormConnexion.php" method="GET" id="login">
-			<h1>Connexion</h1>
-            <span class="err">
-				<?php
-					if (isset($_SESSION['errCnx'])) {
-						echo $_SESSION['errCnx'];
-						$_SESSION['errCnx'] = "";
-					}
-					
-					if (isset($_SESSION['creationOk'])) {
-						echo $_SESSION['creationOk'];
-						$_SESSION['creationOk'] = "";
-					}
-					
-					if (isset($_SESSION['creationNok'])) {
-						echo $_SESSION['creationNok'];
-						$_SESSION['creationNok'] = "";
-					}
-					
-				?>
-            </span>
-			<div class="input-field">
-
-				<label for="idUtil">Identifiant</label>
-				<input type="text" placeholder="Entrer le nom d'utilisateur" name="idUtil" id="idUtil" required>
-
-				<label for="mdpUtil">Mot de Passe</label> 
-				<input type="password" placeholder="Entrer le mot de passe" name="mdpUtil" id="mdpUtil" required>
-
-				<input type="submit" value="Se connecter" class="button">
-				
-
-			</div>
-		</form>
-
-		<form action="controleur/traitementFormInscription.php" id="sinscrire" method="GET">
-			<h1>S'inscrire</h1>
-			<span class="err">
-				<?php
-					if (isset($_SESSION['errMdp'])) {
-						echo $_SESSION['errMdp'];
-						$_SESSION['errMdp'] = "";
-					}
-					if (isset($_SESSION['errId'])) {
-						echo $_SESSION['errId'];
-						$_SESSION['errId'] = "";
-					}
-				?>
-            </span>
-			<div class="input-field">
-	            <label for="idUtilCreation">Identifiant</label> 
-	            <input type="text" placeholder="Choisir un nom d'utilisateur" name="idUtilCreation" id="idUtilCreation" required>
-
-	            <label for="pwdCreation">Mot de Passe</label> 
-	            <input type="password" placeholder="Choisir un mot de passe" name="pwdCreation" id="pwdCreation" required>
-
-	            <label for="pwdBis">Confirmez le Mot de Passe</label> 
-	            <input type="password" placeholder="Ressaisir le mot de passe" name="pwdBis" id="pwdBis" required>
-	            
-	            <input type="submit" value="S'inscrire" class="button" />
-			</div>
-	    </form>
-	</div>
-
-<!--*************** PIED DE PAGE ***************-->
-    <?php include "includes/footer.php"; ?>
-<!--*************** PIED DE PAGE ***************-->
-
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-	      $('.onglet a').on('click', function (e) {
-	      e.preventDefault();
-	       
-	      $(this).parent().addClass('active');
-	      $(this).parent().siblings().removeClass('active');
-	       
-	      var href = $(this).attr('href');
-	      $('.forms > form').hide();
-	      $(href).fadeIn(333);
-	    });
-	});
+<script>
+    $(document).ready(function(){
+        $('.menu').click(function(){
+            $('ul').toggleClass('active');
+        });
+    });
 </script>
 
 </body>
-
 </html>
-
-
-
-

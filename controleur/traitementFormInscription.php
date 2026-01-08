@@ -28,7 +28,7 @@ if (isset($_GET['idUtilCreation']) || isset($_GET['pwdCreation']) || isset($_GET
 		} else {
 			$newUser = new User([
 				'userId' => $id,
-				'userPwd' => $pwd
+				'userPwd' => $pwd,
 			]);
 		
 			if ($userManager->add($newUser)) {
