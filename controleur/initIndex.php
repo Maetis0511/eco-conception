@@ -1,7 +1,7 @@
 <?php
 
 	/* Connexion à la bdd */
-	$con = mysqli_connect("localhost", "root", "YVtu%J#kN9MArRV", "scierie");
+	$con = mysqli_connect("localhost", "root", "Kc0!Wr5!Ma", "scierie");
 
 	/* Gestion des erreurs de connexion */
 	if (mysqli_connect_errno()){

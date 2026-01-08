@@ -68,6 +68,8 @@ class userDao {
            ':userId'  => $user->getUserId(),
            ':userPwd' => $user->getUserPwd()
        ]);
+
+       return $this->idExist($user->getUserId());
 	}
 
     /**
