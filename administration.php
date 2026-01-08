@@ -11,18 +11,13 @@ if ((!(isset($_SESSION['id'])) || empty($_SESSION['id'])) && $_SESSION['role'] !
 <html lang="fr">
 <head>
     <title>Administration</title>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" name="description" content="Administration">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="content/administration.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-    <style>
-        .admin-container { margin-top: 30px; margin-bottom: 50px; }
-        .card-header { background-color: #343a40; color: white; }
-        .btn-action { margin: 0 5px; }
-    </style>
 </head>
 
 <body>
@@ -30,7 +25,7 @@ if ((!(isset($_SESSION['id'])) || empty($_SESSION['id'])) && $_SESSION['role'] !
 <?php include "includes/navbar.php"; ?>
 
 <div class="container-fluid admin-container">
-
+    <main>
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
             <?php if (isset($_SESSION['msgOk'])): ?>
@@ -103,6 +98,7 @@ if ((!(isset($_SESSION['id'])) || empty($_SESSION['id'])) && $_SESSION['role'] !
             </div>
         </div>
     </div>
+            </main>
 </div>
 
 <?php include "includes/footer.php"; ?>
