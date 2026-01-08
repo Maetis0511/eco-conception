@@ -5,6 +5,7 @@ session_start();
 
 <html lang="fr">
 	<head>
+		<meta name="description" content="Video de la scirie">
 		<title>Vidéos</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,6 +30,7 @@ session_start();
 
 </script> 
 <!--*************** END MENU ***************-->
+<main>
 		<div style="text-align: center;">
 			<iframe 
   				width="500" 
@@ -40,6 +42,7 @@ session_start();
   				allowfullscreen>
 			</iframe>
 		</div>
+</main>
 
     <!--*************** PIED DE PAGE ***************-->
     <?php include "includes/footer.php"; ?>
