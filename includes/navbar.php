@@ -1,9 +1,12 @@
 <nav class="navbar">
-    <img src="./images/scierie.gif" style="width:70px; margin:5px;">
+    <img src="./images/scierie.gif" alt="Img" style="width:70px; margin:5px;">
 
-    <li class="toggle">
-        <ul class ="toggle-item"><i class="fa fa-bars menu" aria-hidden="true"> </i></ul>
-    </li>
+
+    <ul class="toggle">
+        <li class="toggle-item">
+            <i class="fa fa-bars menu" aria-hidden="true"></i>
+        </li>
+    </ul>
     <ul class="nav-links">
         <li class="nav-item"><a href="index.php">ACCUEIL</a></li>
         <li class="nav-item"><a href="produits.php">LES PRODUITS</a></li>
@@ -16,7 +19,7 @@
         ?>
     </ul>
 
-    <div class="connexion">
+    <ul class="connexion">
         <?php
         if(isset($_SESSION['id'])) {
             echo "<li class='nav-item'><a href='deconnexion.php'>DECONNEXION</a></li>";
@@ -24,5 +27,5 @@
             echo "<li class='nav-item'><a href='connexion.php'>CONNEXION</a></li>";
         }
         ?>
-    </div>
+    </ul>
 </nav>
