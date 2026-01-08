@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
 <head>
     <title>Connexion / Inscription</title>
-    <meta name="description" content="Contact page">
+    <meta name="description" content="Page de connexion/inscription">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">

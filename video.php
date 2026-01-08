@@ -5,7 +5,7 @@ session_start();
 
 <html lang="fr">
 <head>
-    <meta name="description" content="Video de la scirie">
+    <meta name="description" content="Video de la scierie">
     <title>Vidéos</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

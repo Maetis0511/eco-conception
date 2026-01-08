@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <img src="./images/scierie.gif" alt="Img" style="width:70px; margin:5px;">
+    <img src="./images/scierie.gif" alt="Img" loading="lazy" style="width:70px; margin:5px;">
 
 
     <ul class="toggle">

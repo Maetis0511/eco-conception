@@ -7,7 +7,7 @@ session_start();
     <head>
         <title>Contact</title>
 
-        <meta name="description" content="Contact page">
+        <meta name="description" content="Page de contact"">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -61,7 +61,7 @@ session_start();
                     <h2> NOUS SUIVRE </h2>
 
                     <ul class="logo">
-                        <li class="facebook"><a href="https://www.facebook.com/Scierie-du-Fargal-613509152159633/" target="_blank"><img alt="logo" src="images/facebook.webp"></a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/Scierie-du-Fargal-613509152159633/" target="_blank"><img alt="logo" loading="lazy" src="images/facebook.webp"></a></li>
                     </ul>
                 </div>
 

@@ -34,7 +34,7 @@ while ($resultat = mysqli_fetch_array($requete)) {
         echo '</div>';
 
         echo '<div class="col-12 col-lg-6 order-1 order-lg-2 mb-3 mb-lg-0 text-center">';
-        echo '  <img src="images/' . $resultat['img'] . '" class="img-fluid rounded shadow" alt="Image">';
+        echo '  <img src="images/' . $resultat['img'] . '" loading="lazy" class="img-fluid rounded shadow" alt="Image">';
         echo '</div>';
 
     } else {
@@ -45,7 +45,7 @@ while ($resultat = mysqli_fetch_array($requete)) {
         }
         if ($resultat['img'] != '') {
             echo '<div class="col-12 text-center">';
-            echo '  <img src="images/' . $resultat['img'] . '" class="img-fluid rounded shadow" alt="Image">';
+            echo '  <img src="images/' . $resultat['img'] . '" loading="lazy" class="img-fluid rounded shadow" alt="Image">';
             echo '</div>';
         }
     }
