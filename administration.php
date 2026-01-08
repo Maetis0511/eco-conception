@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Vérification admin
 if ((!(isset($_SESSION['id'])) || empty($_SESSION['id'])) && $_SESSION['role'] != "admin") {
     header("Location:connexion.php");
     exit();

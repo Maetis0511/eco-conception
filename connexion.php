@@ -122,10 +122,9 @@ session_start();
 
                 <div class="card-body p-4">
                     <?php
-                    // 1. Erreur de Connexion
                     if (isset($_SESSION['errCnx']) && !empty($_SESSION['errCnx'])): ?>
                         <div class="alert alert-danger text-center"><?= $_SESSION['errCnx']; ?></div>
-                        <?php unset($_SESSION['errCnx']); // On détruit la variable ?>
+                        <?php unset($_SESSION['errCnx']); ?>
                     <?php endif; ?>
 
                     <?php
@@ -158,7 +157,7 @@ session_start();
                         <div class="tab-pane fade show active" id="loginPanel" role="tabpanel" aria-labelledby="login-tab">
                             <h4 class="text-center mb-4 mt-2" style="color:#54b454;">Connexion</h4>
 
-                            <form action="controleur/traitementFormConnexion.php" method="GET">
+                            <form action="controleur/traitementFormConnexion.php" method="POST">
                                 <div class="form-group">
                                     <label for="idUtil">Identifiant</label>
                                     <div class="input-group">
@@ -188,7 +187,7 @@ session_start();
                         <div class="tab-pane fade" id="registerPanel" role="tabpanel" aria-labelledby="register-tab">
                             <h4 class="text-center mb-4 mt-2" style="color:#54b454;">Inscription</h4>
 
-                            <form action="controleur/traitementFormInscription.php" method="GET">
+                            <form action="controleur/traitementFormInscription.php" method="POST">
                                 <div class="form-group">
                                     <label for="idUtilCreation">Identifiant souhaité</label>
                                     <div class="input-group">
@@ -205,8 +204,18 @@ session_start();
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                         </div>
-                                        <input type="password" class="form-control" name="pwdCreation" id="pwdCreation" placeholder="Mot de passe fort" required>
+                                        <input type="password"
+                                               class="form-control"
+                                               name="pwdCreation"
+                                               id="pwdCreation"
+                                               placeholder="Mot de passe fort"
+                                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+                                               title="Doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial."
+                                               required>
                                     </div>
+                                    <small class="form-text text-muted">
+                                        Min. 8 car., 1 Maj, 1 Min, 1 Chiffre, 1 Spécial.
+                                    </small>
                                 </div>
 
                                 <div class="form-group">
