@@ -14,7 +14,7 @@ $contenuManager = new ContenuDao($jeton);
 
 // Récupération de tout les contenus
 $contenus = $contenuManager->getList();
- 
+
 $select = "  <div class='col-40'>           
 					<label for='lbContenuModif'>Libellé Contenu</label>
 				</div>	
@@ -23,7 +23,7 @@ $select = "  <div class='col-40'>
 
 $select .= " <select id='lbContenuModif' name='lbContenuModif'>";
 for ($i = 0; $i < count($contenus); $i++) {
-    $select .= "<option value='".$contenus[$i]->getId()."'>".$contenus[$i]->getTitre()."</option>";	
+    $select .= "<option value='" . $contenus[$i]->getId() . "'>" . $contenus[$i]->getTitre() . "</option>";
 }
 
 $select .= "</select>

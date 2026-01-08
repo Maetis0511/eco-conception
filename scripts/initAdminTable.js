@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     function getXMLHttpRequest() {
         var xhr = null;
@@ -6,7 +6,7 @@ $(document).ready(function() {
             if (window.ActiveXObject) {
                 try {
                     xhr = new ActiveXObject("Msxml2.XMLHTTP");
-                } catch(e) {
+                } catch (e) {
                     xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
             } else {
@@ -20,7 +20,7 @@ $(document).ready(function() {
     }
 
     var xhr = getXMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
             document.getElementById("listeProduitsBody").innerHTML = xhr.responseText;
         }
@@ -30,7 +30,7 @@ $(document).ready(function() {
     xhr.send(null);
 
 
-    $(document).on('click', '.btn-edit', function() {
+    $(document).on('click', '.btn-edit', function () {
         var id = $(this).data('id');
         var titre = $(this).data('titre');
         var descr = $(this).data('descr');
@@ -48,13 +48,13 @@ $(document).ready(function() {
         }, 500);
     });
 
-    $('#btnReset').click(function() {
+    $('#btnReset').click(function () {
         $('#formProduit')[0].reset();
         $('#idProduit').val('');
         $('#btnSave').html('<i class="fa fa-plus-circle"></i> Ajouter / Enregistrer').removeClass('btn-warning').addClass('btn-success');
     });
 
-    $('.menu').click(function(){
+    $('.menu').click(function () {
         $('ul').toggleClass('active');
     });
 

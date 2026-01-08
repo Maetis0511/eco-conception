@@ -20,20 +20,20 @@ $descr = $_POST['lbDescrModif'];
 $img = $_POST['lbImgModif'];
 
 $updateContenu = new Produit([
-		'id' => $id,
-		'titre' => $titre,
-		'descr' => $descr,
-		'img' => $img
+    'id' => $id,
+    'titre' => $titre,
+    'descr' => $descr,
+    'img' => $img
 ]);
 
 if ($contenuManager->update($updateContenu)) {
     $_SESSION['msgModif2Ok'] = "Contenu modifié avec succès";
-	$cnx->closeConnexion();
-	header("Location:../administration.php");
+    $cnx->closeConnexion();
+    header("Location:../administration.php");
 } else {
-	$_SESSION['msgModif2Nok'] = "Contenu non modifié";
-	$cnx->closeConnexion();
-	header("Location:../administration.php");
+    $_SESSION['msgModif2Nok'] = "Contenu non modifié";
+    $cnx->closeConnexion();
+    header("Location:../administration.php");
 }
 
 ?>
