@@ -74,5 +74,4 @@ class Produit {
 	     $this->_img = $img;
 	}
 
-}   
-?>
+}
