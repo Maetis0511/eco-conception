@@ -85,7 +85,9 @@ session_start();
         }
 
         /* Si tu préfères le texte blanc par défaut sur le bouton vert : */
-        .btn-scierie { color: white; }
+        .btn-scierie {
+            color: white;
+        }
 
         /* Au survol : Fond blanc, texte vert (comme ta navbar) */
         .btn-scierie:hover {
@@ -108,12 +110,14 @@ session_start();
                 <div class="card-header p-0">
                     <ul class="nav nav-tabs nav-fill" id="authTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#loginPanel" role="tab" aria-controls="loginPanel" aria-selected="true">
+                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#loginPanel" role="tab"
+                               aria-controls="loginPanel" aria-selected="true">
                                 <i class="fas fa-sign-in-alt"></i> Connexion
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#registerPanel" role="tab" aria-controls="registerPanel" aria-selected="false">
+                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#registerPanel" role="tab"
+                               aria-controls="registerPanel" aria-selected="false">
                                 <i class="fas fa-user-plus"></i> Inscription
                             </a>
                         </li>
@@ -154,7 +158,8 @@ session_start();
 
                     <div class="tab-content" id="authTabContent">
 
-                        <div class="tab-pane fade show active" id="loginPanel" role="tabpanel" aria-labelledby="login-tab">
+                        <div class="tab-pane fade show active" id="loginPanel" role="tabpanel"
+                             aria-labelledby="login-tab">
                             <h4 class="text-center mb-4 mt-2" style="color:#54b454;">Connexion</h4>
 
                             <form action="controleur/traitementFormConnexion.php" method="POST">
@@ -164,7 +169,8 @@ session_start();
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name="idUtil" id="idUtil" placeholder="Votre nom d'utilisateur" required>
+                                        <input type="text" class="form-control" name="idUtil" id="idUtil"
+                                               placeholder="Votre nom d'utilisateur" required>
                                     </div>
                                 </div>
 
@@ -174,7 +180,8 @@ session_start();
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                         </div>
-                                        <input type="password" class="form-control" name="mdpUtil" id="mdpUtil" placeholder="Votre mot de passe" required>
+                                        <input type="password" class="form-control" name="mdpUtil" id="mdpUtil"
+                                               placeholder="Votre mot de passe" required>
                                     </div>
                                 </div>
 
@@ -194,7 +201,8 @@ session_start();
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user-plus"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name="idUtilCreation" id="idUtilCreation" placeholder="Ex: JeanDupont" required>
+                                        <input type="text" class="form-control" name="idUtilCreation"
+                                               id="idUtilCreation" placeholder="Ex: JeanDupont" required>
                                     </div>
                                 </div>
 
@@ -224,7 +232,8 @@ session_start();
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-check-circle"></i></span>
                                         </div>
-                                        <input type="password" class="form-control" name="pwdBis" id="pwdBis" placeholder="Répétez le mot de passe" required>
+                                        <input type="password" class="form-control" name="pwdBis" id="pwdBis"
+                                               placeholder="Répétez le mot de passe" required>
                                     </div>
                                 </div>
 
@@ -234,7 +243,10 @@ session_start();
                             </form>
                         </div>
 
-                    </div> </div> </div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -244,8 +256,8 @@ session_start();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    $(document).ready(function(){
-        $('.menu').click(function(){
+    $(document).ready(function () {
+        $('.menu').click(function () {
             $('ul').toggleClass('active');
         });
     });
