@@ -59,7 +59,7 @@ session_start();
 					<h2> NOUS SUIVRE </h2>
 
 					<ul class="logo">
-						<li class="facebook"><a href="https://www.facebook.com/Scierie-du-Fargal-613509152159633/" target="_blank"><img src="images/facebook.png"></a></li>
+						<li class="facebook"><a href="https://www.facebook.com/Scierie-du-Fargal-613509152159633/" target="_blank"><img alt="logo" src="images/facebook.png"></a></li>
 					</ul>
 				</div>
 

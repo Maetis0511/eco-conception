@@ -22,7 +22,6 @@ nav {
   align-items: center;
 }
 
-
 .connexion {
 	display: flex;
 }
@@ -36,7 +35,7 @@ nav {
   display: inline-block;
   padding: 25px 15px;
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 .nav-item:hover {

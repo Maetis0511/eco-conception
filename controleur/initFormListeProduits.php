@@ -22,7 +22,7 @@ for ($i = 0; $i < count($produits); $i++) {
 	$produit .= "<li class='main-item'><p class='titre'>".$produits[$i]->getTitre()."</p></li>";
 	$produit .= "<li class ='main-item'><ul class ='sub-list'>";
 	$produit .= "<li class='sub-item'><p class='texte'>".$produits[$i]->getDescr()."</p></li>";
-	$produit .= "<li class='sub-item'><img class='image' src='images/".$produits[$i]->getImg()."'></li>";		
+	$produit .= "<li class='sub-item'><img class='image' alt='produit' src='images/".$produits[$i]->getImg()."'></li>";		
 	$produit .= "</ul></li></ul>";
 	echo $produit;
 }

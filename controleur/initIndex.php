@@ -1,7 +1,7 @@
 <?php
 
 	/* Connexion à la bdd */
-	$con = mysqli_connect("localhost", "root", "Kc0!Wr5!Ma", "scierie");
+	$con = mysqli_connect("localhost", "root", "YVtu%J#kN9MArRV", "scierie");
 
 	/* Gestion des erreurs de connexion */
 	if (mysqli_connect_errno()){
@@ -31,7 +31,7 @@
 
 			$description .= "<li class='sub-item'><p class='texte'>".$resultat['descr']."</p></li>";
 
-			$description .= "<li class='sub-item'><img class='image' src='images/".$resultat['img']."'></li>";
+			$description .= "<li class='sub-item'><img class='image' alt='Image' src='images/".$resultat['img']."'></li>";
 
 			$description .= "</ul></li>";
 
@@ -40,7 +40,7 @@
 				$description .= "<li class='main-item'><p class='texte'>".$resultat['descr']."</p></li>";
 			}
 			if($resultat['img']!=''){
-				$description .= "<li class='main-item'><img class='image' src='images/".$resultat['img']."'></li>";
+				$description .= "<li class='main-item'><img class='image' alt='Image' src='images/".$resultat['img']."'></li>";
 			}
 		}
 		$description .="</ul>";

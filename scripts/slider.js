@@ -68,7 +68,7 @@ function recupXmlSlider(xml){
 
     $(xml).find("slide").each(function(){
 
-        $('#slider').append('<div class="slide"><img src="' + $(this).find("image").text() +  '"/><p class="texteDescriptif">' + $(this).find("description").text() + '</p></div>');
+        $('#slider').append('<div class="slide"><img alt="Img" src="' + $(this).find("image").text() +  '"/><p class="texteDescriptif">' + $(this).find("description").text() + '</p></div>');
     });
 
     var slideIndex, slides, points, texteDescriptif;
